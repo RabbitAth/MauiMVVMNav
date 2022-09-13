@@ -36,6 +36,13 @@ namespace Orders.Common.ViewModel
             SaveCommand = new DelegateCommand(Save, () => CanSave);
         }
 
+        public OrderViewModel(Order order)
+        {
+            _order = order;
+
+            SaveCommand = new DelegateCommand(Save, () => CanSave);
+        }
+
         public bool CanSave => !string.IsNullOrEmpty(CustomerName) && CustomerName.Length >= 3;
 
         public void Save()

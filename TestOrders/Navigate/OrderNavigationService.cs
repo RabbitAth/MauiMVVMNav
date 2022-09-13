@@ -19,44 +19,6 @@ namespace TestOrders.Navigate
         public void NavigateToOrderAsync(Order order)
         {
             Shell.Current.GoToAsync(nameof(OrderPage), true, new Dictionary<string, object> { { "Order", order } });
-        }
-
-
-
-
-
-        public void Navigate(Type page)
-        {
-            Shell.Current.GoToAsync(nameof(page));
-        }
-
-        public void Navigate(Type page, object parameter)
-        {
-
-        }
-
-        public void GoBack()
-        {
-            Shell.Current.GoToAsync("..");
-        }
-
-        public void GoBackToAnother(Type page)
-        {
-            Shell.Current.GoToAsync($"../{nameof(page)}");
-        }
-
-        public void GoBackToAnother(List<Type> pages)
-        {
-            string pageURI = "";
-
-            foreach (Type page in pages)
-            {
-                pageURI += "/" + page.ToString();
-            }
-
-            Shell.Current.GoToAsync($"..{pageURI}");
-        }
-
-        
+        }        
     }
 }
