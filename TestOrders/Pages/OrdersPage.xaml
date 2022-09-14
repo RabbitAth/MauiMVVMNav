@@ -7,10 +7,12 @@
              xmlns:viewmodel="clr-namespace:Orders.Common.ViewModel;assembly=Orders.Common"
              x:DataType="viewmodel:OrdersViewModel">
 
-        <VerticalStackLayout>
-            <Label Text="Orders" HorizontalOptions="Center"/>
+    <VerticalStackLayout>
+        <Label Text="Orders" HorizontalOptions="Center"/>
 
-            <CollectionView
+        <Button Text="New Order" Command="{Binding GoToNewOrderCommand}" HorizontalOptions="Start"/>
+
+        <CollectionView
                     ItemsSource="{Binding Orders}"
                     SelectionMode="None">
                 <CollectionView.ItemTemplate>
@@ -32,6 +34,5 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </VerticalStackLayout>
-
+    </VerticalStackLayout>
 </ContentPage>

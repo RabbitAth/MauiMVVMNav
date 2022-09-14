@@ -2,13 +2,7 @@
 using Orders.Common.Model;
 using Orders.Common.Service;
 using Orders.Common.ViewModel.Command;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace Orders.Common.ViewModel
 {
@@ -21,7 +15,9 @@ namespace Orders.Common.ViewModel
 
         public RelayCommand<Order> GoToOrdersCommand { get; }
 
-        private Order _order;
+        public DelegateCommand GoToNewOrderCommand { get; }
+
+        //private Order _order;
 
         public OrdersViewModel(IOrderNavigation navigationService)
         {
@@ -29,9 +25,9 @@ namespace Orders.Common.ViewModel
             _orderDataProvider = new OrderDataProvider();
             _navigationService = navigationService;
 
-            _order = new Order();
 
-            GoToOrdersCommand = new RelayCommand<Order>((order) => OrderDetails(_order));
+            GoToOrdersCommand = new RelayCommand<Order>((order) => OrderDetails((Order)order));
+            GoToNewOrderCommand = new DelegateCommand(NewOrder);
 
             Load();
         }
@@ -51,6 +47,11 @@ namespace Orders.Common.ViewModel
                 return;
 
             _navigationService.NavigateToOrderAsync(order);
+        }
+
+        private void NewOrder()
+        {
+            _navigationService.NavigateToOrderAsync();
         }
     }
 }

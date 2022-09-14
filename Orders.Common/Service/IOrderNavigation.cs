@@ -7,5 +7,7 @@ namespace Orders.Common.Service
         void NavigateToOrdersAsync();
 
         void NavigateToOrderAsync(Order order);
+
+        void NavigateToOrderAsync();
     }
 }
